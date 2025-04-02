@@ -1,0 +1,19 @@
+<div class="py-5 text-center text-white rounded" style="background: linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%); position: relative; overflow: hidden;">
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image: url('/static/images/pattern.svg'); background-size: cover; opacity: 0.1;"></div>
+  <div class="container position-relative py-5 animate-fade-in">
+    <h1 class="display-4 fw-bold mb-4">Welcome to Hospital Management System</h1>
+    <p class="lead mx-auto mb-4" style="max-width: 700px;">Your health is our priority. We provide the best healthcare services with state-of-the-art facilities and expert doctors.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <% if (user) { %>
+        <% if (user.usertype === 'Doctor') { %>
+          <a href="/bookings" class="btn btn-light btn-lg px-4">View Patient Appointments</a>
+        <% } else { %>
+          <a href="/book-appointment" class="btn btn-light btn-lg px-4">Book an Appointment</a>
+        <% } %>
+      <% } else { %>
+        <a href="/login" class="btn btn-light btn-lg px-4">Login to Book an Appointment</a>
+        <a href="/signup" class="btn btn-outline-light btn-lg px-4">Sign Up</a>
+      <% } %>
+    </div>
+  </div>
+</div> 

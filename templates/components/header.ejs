@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a href="/" class="navbar-brand d-flex align-items-center">
+      <img src="/static/images/logo.svg" alt="Hospital Management" height="40" class="me-2">
+      Hospital Management
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="/" class="nav-link <%= (typeof active !== 'undefined' && active === 'home') ? 'active' : '' %>">Home</a>
+        </li>
+        <% if (user) { %>
+          <% if (user.usertype !== 'Doctor') { %>
+          <li class="nav-item">
+            <a href="/book-appointment" class="nav-link <%= (typeof active !== 'undefined' && active === 'book') ? 'active' : '' %>">Book Appointment</a>
+          </li>
+          <% } %>
+          <li class="nav-item">
+            <a href="/bookings" class="nav-link <%= (typeof active !== 'undefined' && active === 'bookings') ? 'active' : '' %>">
+              <% if (user.usertype === 'Doctor') { %>View Appointments<% } else { %>My Bookings<% } %>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">Logout</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a href="/login" class="nav-link <%= (typeof active !== 'undefined' && active === 'login') ? 'active' : '' %>">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/signup" class="nav-link <%= (typeof active !== 'undefined' && active === 'signup') ? 'active' : '' %>">Signup</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav> 

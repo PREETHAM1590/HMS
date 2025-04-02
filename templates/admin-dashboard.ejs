@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | Hospital Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <%- include('./components/header') %>
+
+    <div class="container mt-5 animate-fade-in">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Admin Dashboard</h2>
+                        <p class="card-text">Welcome to the admin dashboard. Here you can manage user appointments and system data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">User Management</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% users.forEach(function(user) { %>
+                                    <tr>
+                                        <td><%= user.id %></td>
+                                        <td><%= user.username %></td>
+                                        <td><%= user.email %></td>
+                                        <td>
+                                            <a href="/admin/user/<%= user.id %>" class="btn btn-sm btn-primary">View</a>
+                                            <a href="/admin/user/<%= user.id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="/admin/user/<%= user.id %>/delete" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Appointment Management</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Patient</th>
+                                        <th>Department</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% appointments.forEach(function(appointment) { %>
+                                    <tr>
+                                        <td><%= appointment.id %></td>
+                                        <td><%= appointment.name %></td>
+                                        <td><%= appointment.department %></td>
+                                        <td><%= appointment.date %></td>
+                                        <td>
+                                            <a href="/admin/appointment/<%= appointment.id %>" class="btn btn-sm btn-primary">View</a>
+                                            <a href="/admin/appointment/<%= appointment.id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="/admin/appointment/<%= appointment.id %>/delete" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">System Statistics</h3>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-primary text-white rounded">
+                                    <h4>Total Users</h4>
+                                    <h2><%= users.length %></h2>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-success text-white rounded">
+                                    <h4>Appointments</h4>
+                                    <h2><%= appointments.length %></h2>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-info text-white rounded">
+                                    <h4>Doctors</h4>
+                                    <h2><%= doctors.length %></h2>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-warning text-white rounded">
+                                    <h4>Departments</h4>
+                                    <h2><%= departments.length %></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <a href="/" class="btn btn-secondary">Back to Home</a>
+                <a href="/logout" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./components/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html> 

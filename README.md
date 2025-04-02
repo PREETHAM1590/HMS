@@ -19,9 +19,6 @@ A modern web-based hospital management system built with Node.js, Express, and E
 ## Installation
 
 1. Clone the repository
-   ```
-   git clone https://github.com/PREETHAM1590/HMS.git
-   ```
 2. Navigate to the project directory
 3. Install dependencies:
    ```
@@ -88,26 +85,6 @@ node server-sqlite.js
 
 The server will start on port 3000 (or the port specified in your .env file). Visit http://localhost:3000 in your browser.
 
-## Deployment to Vercel
-
-This project is configured for deployment on Vercel:
-
-1. Fork or clone this repository to your GitHub account
-2. Create a new project on [Vercel](https://vercel.com)
-3. Import your GitHub repository
-4. Configure environment variables in the Vercel dashboard:
-   - `DATABASE_URL`: Your production database URL (MySQL or PlanetScale)
-   - `SESSION_SECRET`: A secure random string for session encryption
-   - `NODE_ENV`: Set to `production`
-5. Deploy!
-
-### Using MySQL with Vercel
-
-For production deployment, you'll need a MySQL-compatible database that's accessible from Vercel:
-- [PlanetScale](https://planetscale.com/)
-- [Amazon RDS](https://aws.amazon.com/rds/mysql/)
-- [Digital Ocean Managed MySQL](https://www.digitalocean.com/products/managed-databases)
-
 ## Default Admin Login (SQLite version only)
 
 Email: admin@hospital.com
@@ -143,7 +120,6 @@ node view-sqlite-db.js
 - `public/` - Public assets
   - `css/` - CSS files
 - `data/` - SQLite database files (created when using SQLite)
-- `vercel.json` - Configuration for Vercel deployment
 
 ## Credits
 
